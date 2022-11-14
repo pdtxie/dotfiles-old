@@ -18,12 +18,13 @@ dotfiles for:
 - zsh
 
 waybar requires:
-- pulseaudio (+probably pavucontrol for gui)
+- pulseaudio (+you'll probably want pavucontrol for gui)
 - fontawesome icons
 - deepin icon theme
 
 wayfire:
 - keybinds are mostly the same as macos
+- i've tried to make the trackpad gestures as macos-like as possible - still needs work but getting there
 - uses brillo, grim, slurp, wl-copy and wl-recorder 
 
 cursor theme is a modified bibata-ice theme to match the theme colour ([can be found here](https://github.com/ful1e5/Bibata_Cursor))
