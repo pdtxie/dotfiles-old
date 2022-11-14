@@ -22,5 +22,9 @@ waybar requires:
 - fontawesome icons
 - deepin icon theme
 
+wayfire:
+- keybinds are mostly the same as macos
+- uses brillo, grim, slurp, wl-copy and wl-recorder 
+
 cursor theme is a modified bibata-ice theme to match the theme colour ([can be found here](https://github.com/ful1e5/Bibata_Cursor))
 theme used for all configs is [catppuccin](https://github.com/catppuccin/catppuccin) 
