@@ -1,0 +1,80 @@
+{
+	"layer": "top", // Waybar at top layer
+	"position": "bottom", // Waybar position (top|bottom|left|right)
+	"height": 38, // Waybar height (to be removed for auto height)
+	// "width": 1280, // Waybar width
+	"modules-left": ["custom/launcher", "wlr/taskbar"],
+	"modules-center": [],
+	"modules-right": ["cpu", "backlight", "custom/div", "pulseaudio", "network", "battery", "custom/div", "clock"],
+	"wlr/taskbar": {
+		"all-outputs": false,
+		"format": "{icon}",
+		"icon-size": "14",
+		"icon-theme": "Deepin2022",
+		"tooltip-format": "{title}",
+		"on-click": "minimize-raise",
+		"on-click-middle": "close"
+	},
+	"custom/launcher": {
+		"format": "",
+		"tooltip": false,
+		"on-click": "firefox --new-window"
+	},
+	"cpu": {
+		"format": "{usage} ",
+		"tooltip": false
+	},
+	"custom/div": {
+		"format": "｜",
+		"tooltip": false
+	},
+	"battery": {
+		"tooltip": false,
+		"states": {
+			// "good": 95,
+			"warning": 30,
+			"critical": 15
+		},
+		"format": "{capacity} {icon}",
+		"format": "{capacity} {icon}",
+		"format-charging": "{capacity}% ",
+		"format-plugged": "{capacity}% ",
+		"format-icons": ["", "", "", "", ""],
+		"format-alt": "{time} {icon}"
+	},
+	"network": {
+		"tooltip": false,
+        "format-wifi": "{essid} ",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+        "format-alt": "{ifname} ({ipaddr}/{cidr}) "
+    },
+	"backlight": {
+		"tooltip": false,
+        "format": "{percent} {icon}",
+        "format-icons": ["", "", "", "", "", "", "", "", ""]
+    },
+	"pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+		"tooltip": false,
+        "format": "{volume} {icon}  {format_source}",
+        "format-bluetooth": "{volume} {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": "{volume} ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol",
+		"on-scroll-up": "pactl set-sink-mute 0 false; pactl set-sink-volume 0 -1%",
+		"on-scroll-down": "pactl set-sink-mute 0 false; pactl set-sink-volume 0 +1%"
+    },
+}

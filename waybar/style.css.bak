@@ -1,0 +1,83 @@
+@import url("./colors.css");
+
+* {
+    border: 0px;
+    margin: 0px;
+    border-radius: 0;
+    /* `otf-font-awesome` is required to be installed for icons */
+    font-family: 'M PLUS 2';
+    font-size: 14px;
+	font-weight: 600;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: @bg-color;
+}
+
+
+#taskbar button {
+    padding: 0 0 0 3px;
+    margin: 0px;
+    color: @btn-fg;
+    background: transparent;
+    background-color: @btn-color;
+    padding: 0 6px 0 6px;
+    transition: background-color 0.3s cubic-bezier(0.4, 0.0, 0.2, 1) 0s, color 0.3s cubic-bezier(0.4, 0.0, 0.2, 1) 0s;
+}
+#taskbar button.active {
+    color: @btn-active-fg;
+    background-color: @btn-active-color;
+}
+
+#taskbar button:hover {
+    color: @btn-hover-fg;
+    background: transparent;
+    background-color: @btn-hover-color;
+	-gtk-icon-shadow: none;
+	-gtk-icon-effect: none;
+	text-shadow: unset;
+	box-shadow: unset;
+	border-color: transparent;
+}
+
+
+.modules-left > widget:first-child > #workspaces {
+	padding-left: 0px;
+	margin-left: 0px;
+}
+
+.modules-right > widget:last-child > #workspaces {
+    	padding-right: 0px;
+	margin-right: 0px;
+
+}
+
+
+#clock {
+	background-color: @task-yellow;
+}
+
+#cpu {
+	background-color: @task-blue;
+}
+
+#battery {
+    background-color: @task-green;
+}
+
+#battery.charging {
+    background-color: @task-green;
+}
+
+#battery.warning {
+	background-color: @task-orange;
+}
+
+#battery.critical:not(.charging) {
+	background-color: @task-red;
+}
+
+label:focus {
+    background-color: #000000;
+}

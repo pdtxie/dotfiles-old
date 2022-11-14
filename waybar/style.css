@@ -1,0 +1,146 @@
+@import url("./colors.css");
+
+* {
+	border: 0px;
+	margin: 0px;
+	border-radius: 0;
+	/* `otf-font-awesome` is required to be installed for icons */
+	font-family: 'M PLUS 2';
+	font-size: 13px;
+	font-weight: 600;
+	min-height: 0;
+	-gtk-icon-shadow: none;
+	-gtk-icon-effect: none;
+}
+
+window#waybar {
+	background-color: @bg-color;
+}
+
+
+/* LAUNCHER */
+#custom-launcher {
+	background-color: @card-color;
+
+	font-size: 15px;
+	color: @ctp-macchiato-lavender;
+
+	box-shadow: 0 0 4px 4px rgba(0,0,0,0.25);
+	padding: 0;
+	padding-left: 8px;
+	padding-right: 8px;
+	margin: 5px;
+	/* margin: 5px 5px 5px 5px; */
+	border-radius: 4px;
+	text-shadow: none;
+}
+
+
+/* TASKBAR */
+#taskbar button {
+	box-shadow: 0 11px 0 -8px @taskbar-line;
+	margin: 0px;
+	background: transparent;
+	margin: 3px 0 10px 0;
+	padding-bottom: 2px;
+	transition: box-shadow 0.3s cubic-bezier(0.4, 0.0, 0.2, 1) 0s, color 0.3s cubic-bezier(0.4, 0.0, 0.2, 1) 0s;
+}
+
+#taskbar button.active {
+	box-shadow: 0 8px 0 -5px @taskbar-active;
+}
+
+#taskbar button.minimized {
+	box-shadow: 0 6px 0 -3px @taskbar-inactive;
+}
+
+#taskbar button:hover {
+	box-shadow: 0 6px 0 -3px @taskbar-hover;
+	text-shadow: unset;
+}
+
+#taskbar button.active:hover {
+	box-shadow: 0 6px 0 -3px lighter(@taskbar-active);
+}
+
+
+
+
+/* RIGHT BODULES */
+#cpu, #backlight, #network, #pulseaudio, #battery, #clock {
+	padding: 0;
+	margin-right: 12px;
+}
+
+
+.modules-right {
+	background-color: @card-color;
+	box-shadow: 0 0 4px 4px rgba(0,0,0,0.25);
+	/* margin: 5px 6px 6px 5px; */
+	margin: 5px;
+	padding-left: 12px;
+	border-radius: 4px;
+	text-shadow: none;
+}
+
+#cpu:active, #backlight:active, #network:active, #pulseaudio:active, #battery:active, #clock:active, #custom-launcher:active {
+	background-image: none;
+}
+
+.modules-left > widget:first-child > #workspaces {
+	padding-left: 0px;
+	margin-left: 0px;
+}
+
+.modules-right > widget:last-child > #workspaces {
+	padding-right: 0px;
+	margin-right: 0px;
+}
+
+#cpu, #backlight {
+	color: @ctp-macchiato-overlay1;
+}
+
+#backlight {
+	padding-right: 0;
+	margin-right: 0;
+}
+
+#network {
+	color: @ctp-macchiato-blue;
+}
+
+#pulseaudio {
+	color: @ctp-macchiato-mauve;
+}
+
+
+#battery {
+	color: @ctp-macchiato-sapphire;
+	padding-right: 0;
+	margin-right: 0;
+}
+
+#clock {
+	font-size: 15px;
+	color: @ctp-macchiato-lavender;
+	padding-left: 0;
+	margin-left: 0;
+}
+
+
+#custom-div {
+	font-family: 'M PLUS 2';
+	font-size: 13px;
+	font-weight: 600;
+	color: @ctp-macchiato-overlay0;
+	padding: 0;
+	margin: 0;
+	margin-left: 8px;
+	margin-right: 8px;
+}
+
+
+label:focus {
+    background-color: @card-color;
+}

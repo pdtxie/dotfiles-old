@@ -1,0 +1,10 @@
+@import url('./catppuccin.css');
+
+@define-color bg-color alpha(@ctp-macchiato-base, 0.75);
+@define-color card-color @ctp-macchiato-mantle;
+@define-color modules-fg @ctp-macchiato-mauve;
+
+@define-color taskbar-inactive @ctp-macchiato-surface0;
+@define-color taskbar-active @ctp-macchiato-peach;
+@define-color taskbar-line @ctp-macchiato-overlay0;
+@define-color taskbar-hover @ctp-macchiato-overlay2;
