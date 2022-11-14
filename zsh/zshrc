@@ -1,0 +1,30 @@
+export MOZ_ENABLE_WAYLAND=1
+
+if [[ "$(tty)" == "/dev/tty1" ]]
+	then
+		exec dbus-run-session wayfire &> ~/.cache/wf-log
+fi
+
+# The following lines were added by compinstall
+
+zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
+zstyle ':completion:*' list-colors ''
+zstyle ':completion:*' menu select=1
+zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+zstyle :compinstall filename '/home/pdt/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=500
+SAVEHIST=10
+setopt autocd beep extendedglob nomatch notify
+bindkey -v
+# End of lines configured by zsh-newuser-install
+source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+source ~/.zshtheme
+
+alias vi=nvim
+alias open=thunar
