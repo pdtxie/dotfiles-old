@@ -81,10 +81,6 @@ require('packer').startup(function(use)
 		end
 	}
 
-	use {
-		'glacambre/firenvim',
-		run = function() vim.fn['firenvim#install'](0) end 
-	}
 
 	use {
 		"danymat/neogen",
@@ -161,37 +157,6 @@ require('packer').startup(function(use)
 
 	use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
 
-	use {
-		"nvim-neorg/neorg",
-		config = function()
-			require('neorg').setup {
-				load = {
-					["core.norg.completion"] = {
-						config = { -- Note that this table is optional and doesn't need to be provided
-							engine = "nvim-cmp"
-						}
-					},
-					["core.integrations.treesitter"] = {
-						config = { -- Note that this table is optional and doesn't need to be provided
-							-- Configuration here
-						}
-					},
-					["core.defaults"] = {},
-					["core.norg.dirman"] = {
-						config = {
-							workspaces = {
-								work = "~/notes/work",
-								home = "~/notes/home",
-							}
-						}
-					}
-				}
-
-			}
-		end,
-		requires = "nvim-lua/plenary.nvim"
-	}
-
 
 	use {
 		"folke/persistence.nvim",
@@ -236,13 +201,6 @@ require('packer').startup(function(use)
 		end
 	}
 
-	use {
-		"folke/zen-mode.nvim",
-		config = function()
-			require("zen-mode").setup {
-			}
-		end,
-	}
 
 	use {
 		"folke/todo-comments.nvim",
@@ -257,35 +215,12 @@ require('packer').startup(function(use)
 	}
 
 
-
-	use {
-		'romgrk/barbar.nvim',
-		requires = {'kyazdani42/nvim-web-devicons'},
-		config = function()
-			require'bufferline'.setup {
-				auto_hide = true,
-			}
-		end
-	}
-
 	use {'petertriho/nvim-scrollbar',
 		config = function()
 			require("scrollbar").setup({})
 		end
 	}
 
-	use {'karb94/neoscroll.nvim',
-		config = function()
-			require('neoscroll').setup({
-				mappings = {'<C-u>', '<C-d>', '<C-b>', '<C-f>',
-					'<C-y>', '<C-e>', 'zt', 'zz', 'zb'}
-			})
-			local t = {}
-			t['<PageUp>'] = {'scroll', {'-vim.api.nvim_win_get_height(0)', 'true', '100'}}
-			t['<PageDown>'] = {'scroll', { 'vim.api.nvim_win_get_height(0)', 'true', '100'}}
-			require('neoscroll.config').set_mappings(t)
-		end
-	}
 
 	use { 'https://tpope.io/vim/sleuth.git', -- Automatically detect tab status
 		config = function()
@@ -689,7 +624,7 @@ require('packer').startup(function(use)
 			}
 			lspconfig.clangd.setup{
 				capabilities = vim.tbl_extend('keep', capabilities, lsp_status.capabilities),
-				cmd = {'clangd', '--function-arg-placeholders=false'},
+				cmd = {'/usr/local/opt/llvm/bin/clangd', '--function-arg-placeholders=false'},
 				init_options = { clangdFileStatus = true },
 				handlers = lsp_status.extensions.clangd.setup(),
 				on_attach = function(c,b) lsp_status.on_attach(c,b); on_attach(c,b) end
