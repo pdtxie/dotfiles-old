@@ -17,6 +17,8 @@ vim.go.laststatus = 3 -- 1 statusline for every window
 vim.o.inccommand = "split" -- Incremental rename - show changes in window
 vim.opt.list = true
 
+vim.opt.smd = false
+
 
 if vim.fn.has('termguicolors') == 1 then
 	vim.o.termguicolors = true
@@ -45,6 +47,16 @@ tex_opts = {
 	'-pvc',
 }
 
+
+mode_format = function(str) 
+	if str == "V-LINE" then
+		return "V-L"
+	elseif str == "V-BLOCK" then 
+		return "V-B"
+	else
+		return str:sub(1,1) 
+	end
+end
 
 
 vim.g.vimtex_compiler_latexmk = {
@@ -157,7 +169,6 @@ require('packer').startup(function(use)
 
 	use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
 
-
 	use {
 		"folke/persistence.nvim",
 		event = "BufReadPre", -- this will only start session saving when an actual file was opened
@@ -200,7 +211,6 @@ require('packer').startup(function(use)
 			}
 		end
 	}
-
 
 	use {
 		"folke/todo-comments.nvim",
@@ -624,7 +634,7 @@ require('packer').startup(function(use)
 			}
 			lspconfig.clangd.setup{
 				capabilities = vim.tbl_extend('keep', capabilities, lsp_status.capabilities),
-				cmd = {'/usr/local/opt/llvm/bin/clangd', '--function-arg-placeholders=false'},
+				cmd = {'clangd', '--function-arg-placeholders=false'},
 				init_options = { clangdFileStatus = true },
 				handlers = lsp_status.extensions.clangd.setup(),
 				on_attach = function(c,b) lsp_status.on_attach(c,b); on_attach(c,b) end
@@ -688,22 +698,21 @@ require('packer').startup(function(use)
 					icons_enabled = true,
 					theme = "catppuccin",
 					section_separators = { left = '', right = ''},
-					-- section_separators = { left = '', right = ''},
-					component_separators = { left = '|', right = '|'},
+					component_separators = { left = '', right = ''},
 					disabled_filetypes = {"coc-explorer"},
 					always_divide_middle = false,
 					global_status = true
 				},
 				sections = {
-					-- lualine_a = {{ 'mode', separator = { left = '', right = ''}}},
-					lualine_a = {{ 'mode' }},
+					lualine_a = {{ 'mode', fmt = mode_format }},
 					lualine_b = { 'filename', 'branch', 'diff',
 					{'diagnostics', sources={'nvim_diagnostic'}}},
 					lualine_c = {},
-					lualine_x = {{'o:encoding', fmt = string.upper, cond = realfile}, {'o:fileformat', fmt = fmt_filefmt, cond = realfile}, {indentation, cond = realfile}, lsp_names},
+					-- lualine_x = {{'o:encoding', fmt = string.upper, cond = realfile}, {'o:fileformat', fmt = fmt_filefmt, cond = realfile}, {indentation, cond = realfile}, lsp_names},
+					lualine_x = {{}},
 					lualine_y = {'filetype', lsp},
-					-- lualine_z = {{'progress', separator = { left = '' }}, { 'location', separator = { left = '', right = ''}}},
-					lualine_z = {{'progress', separator = { left = '' }}, { 'location', separator = { left = '', right = ''}}},
+					-- lualine_z = {{'progress', separator = { left = '' }}, { 'location', separator = { left = '', right = ''}}},
+					lualine_z = {{}},
 				},
 				inactive_sections = {
 					lualine_a = {'filename'},
